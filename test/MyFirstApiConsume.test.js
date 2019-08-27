@@ -2,7 +2,7 @@ const agent = require('superagent');
 const statusCode = require('http-status-codes');
 const chai = require('chai');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('First Api Tests', () => {
   it('Consume GET Service', async () => {
@@ -26,11 +26,10 @@ describe('First Api Tests', () => {
   });
 
   it('Consume HEAD Service', async () => {
-
     const response = await agent.head('https://httpbin.org/get');
 
     expect(response.status).to.equal(statusCode.OK);
-    expect(response.body.json).to.be.undefined;
+    expect(response.body.json).to.equal(undefined);
   });
 
   it('Consume PUT Service', async () => {
